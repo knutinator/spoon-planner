@@ -1,6 +1,5 @@
 from django.shortcuts import render
-# from .models import MyModel
-
+from .models import Task
 
 # def my_view(request):
 #     my_objects = MyModel.objects.all()
@@ -8,3 +7,5 @@ from django.shortcuts import render
 #     return render(request, 'my_template.html', context)
 
 # Create your views here.
+
+

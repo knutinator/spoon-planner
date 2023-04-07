@@ -1,11 +1,18 @@
 from django.contrib import admin
-# from .models import MyModel
+from .models import Task
 
 
-# class MyModelAdmin(admin.ModelAdmin):
-#     pass
+class TaskAdmin(admin.ModelAdmin):
+    pass
 
 
-# admin.site.register(MyModel, MyModelAdmin)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'energy']
+    fields = ['name', 'description', 'energy']
+#    radio_fields = {'energy': admin.HORIZONTAL}
 
-# Register your models here.
+
+admin.site.register(Task, TaskAdmin)
+
+
+
