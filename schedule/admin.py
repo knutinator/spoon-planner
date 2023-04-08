@@ -9,10 +9,6 @@ class TaskAdmin(admin.ModelAdmin):
 class TaskAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'energy']
     fields = ['name', 'description', 'energy']
-#    radio_fields = {'energy': admin.HORIZONTAL}
 
 
 admin.site.register(Task, TaskAdmin)
-
-
-

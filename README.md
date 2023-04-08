@@ -48,12 +48,13 @@ The Spoonplanner App is a tool designed specifically for people within the neuro
 
 ## Testing
 
-## Built With
+## Technologies
 
 - Django framework
 - PostgreSQL database
 - HTML/CSS/JavaScript
 - Bootstrap front-end framework
+- Whitenoise
 
 ## Contributing
 
