@@ -56,6 +56,10 @@ The Spoonplanner App is a tool designed specifically for people within the neuro
 - Bootstrap front-end framework
 - Whitenoise
 
+## Credits
+login page inspiration: https://learndjango.com/tutorials/django-login-and-logout-tutorial
+
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
