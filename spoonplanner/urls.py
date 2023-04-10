@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from schedule.views import TaskListView, TaskCreateView
+from schedule.views import TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
@@ -24,5 +24,6 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')),
     path('tasks/', TaskListView.as_view(), name='task-list'),
     path('tasks/create/', TaskCreateView.as_view(), name='task-create'),
+    path('<int:pk>/edit/', TaskUpdateView.as_view(), name='task-edit'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

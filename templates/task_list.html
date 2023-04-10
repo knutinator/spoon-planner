@@ -5,7 +5,7 @@
   <p><a href="{% url 'task-create' %}">Create new task</a></p>
   <ul>
     {% for task in tasks %}
-      <li>{{ task.name }} - {{ task.description }} - ({{ task.energy }} spoons)</li>
+      <li>{{ task.name }} - {{ task.description }} - ({{ task.energy }} spoons) <a href="{% url 'task-edit' task.pk %}">Edit</a></li>
     {% empty %}
       <li>No tasks yet.</li>
     {% endfor %}
