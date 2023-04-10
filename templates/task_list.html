@@ -2,12 +2,16 @@
 
 {% block content %}
   <h1>Task List</h1>
-  <p><a href="{% url 'task-create' %}">Create new task</a></p>
   <ul>
-    {% for task in tasks %}
-      <li>{{ task.name }} - {{ task.description }} - ({{ task.energy }} spoons) <a href="{% url 'task-edit' task.pk %}">Edit</a></li>
+    {% for task in object_list %}
+      <li>
+        {{ task.name }} - {{ task.description }} ({{ task.energy }} spoons)
+        <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
+        <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
+      </li>
     {% empty %}
-      <li>No tasks yet.</li>
+      <li>No tasks found.</li>
     {% endfor %}
   </ul>
+  <a href="{% url 'task-create' %}" class="btn btn-success">New Task</a>
 {% endblock %}
