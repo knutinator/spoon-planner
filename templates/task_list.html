@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1>Task List</h1>
+  <p><a href="{% url 'task-create' %}">Create new task</a></p>
   <ul>
     {% for task in tasks %}
       <li>{{ task.name }} - {{ task.description }} - ({{ task.energy }} spoons)</li>

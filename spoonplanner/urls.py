@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from schedule.views import TaskListView
+from schedule.views import TaskListView, TaskCreateView
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
-    path('account/', include('django.contrib.auth.urls')), 
+    path('account/', include('django.contrib.auth.urls')),
     path('tasks/', TaskListView.as_view(), name='task-list'),
+    path('tasks/create/', TaskCreateView.as_view(), name='task-create'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]
