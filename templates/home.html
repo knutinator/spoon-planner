@@ -16,11 +16,9 @@
         <li>{{ task.name }} - {{ task.description }} ({{ task.energy }} spoons) </li>
     {% endfor %}
 </ul>
-
-            <p><a href="{% url 'logout' %}">Log Out</a></p>
     {% else %}
         <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Log In</a>
-        <a href="/account/signup">Create new user</a>
+
+        <p><a href="/account/signup">Create new user</a></p>
     {% endif %}
 {% endblock %}

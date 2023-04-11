@@ -13,10 +13,14 @@
     <header>
       <nav>
         <ul>
-          <p>SpoonPlanner</p>
+          <p><strong>SpoonPlanner</strong> 
           {% if user.is_authenticated %}
-<!-- this content hidden unless logged in -->
+          {{ user.username }}
+          <a href="{% url 'logout' %}">Log Out</a>
+          {% else %}
+          <a href="{% url 'login' %}">Log In</a>
           {% endif %}
+          </p>
         </ul>
       </nav>
     </header>

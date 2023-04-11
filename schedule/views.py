@@ -72,6 +72,6 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
-            selected_tasks = Task.objects.filter(selected=True)
+            selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
             context['selected_tasks'] = selected_tasks
         return context
