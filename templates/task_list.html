@@ -5,13 +5,24 @@
   <ul>
     {% for task in object_list %}
       <li>
-        {{ task.name }} - {{ task.description }} ({{ task.energy }} spoons)
+        <strong>{{ task.name }}</strong> - {{ task.description }} ({{ task.energy }} spoons) 
+        <form method="post" action="{% url 'task-complete' task.pk %}">
+          {% csrf_token %}
+          <input type="checkbox" name="completed" value="on" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+        </form>
         <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
         <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
+        <br>
+        <br>
       </li>
     {% empty %}
       <li>No tasks found.</li>
     {% endfor %}
   </ul>
-  <a href="{% url 'task-create' %}" class="btn btn-success">New Task</a>
+  <ul>
+    <li>
+      <a href="{% url 'task-create' %}" class="btn btn-success">New Task</a>
+    </li>
+  </ul>
+
 {% endblock %}

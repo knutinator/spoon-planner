@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from schedule.views import TaskListView, TaskCreateView
+from schedule.views import TaskListView, TaskCreateView, TaskCompleteView
 from schedule.views import TaskUpdateView, TaskDeleteView, TaskDeleteConfirmView
 from django.views.generic.base import TemplateView
 
@@ -28,5 +28,7 @@ urlpatterns = [
     path('<int:pk>/edit/', TaskUpdateView.as_view(), name='task-edit'),
     path('<int:pk>/delete/', TaskDeleteView.as_view(), name='task-delete'),
     path('<int:pk>/delete/confirm/', TaskDeleteConfirmView.as_view(), name='task-confirm-delete'),
+    path('<int:pk>/complete/', TaskCompleteView.as_view(), name='task-complete'),
+    path('<int:pk>/update/', TaskUpdateView.as_view(), name='task-update'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

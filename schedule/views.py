@@ -1,6 +1,7 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Task
 
 
@@ -11,13 +12,13 @@ class TaskListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()  # accesses the method of the parent class
-        queryset = queryset.filter(user=self.request.user)  # only gets the tasks in the database created by the current user
+        queryset = queryset.filter(user=self.request.user)  # gets only the tasks in the database created by the current user
         return queryset
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['name', 'description', 'energy']
+    fields = ['name', 'description', 'energy', 'completed']
     success_url = reverse_lazy('task-list')
     template_name = 'task_create.html'
 
@@ -26,17 +27,32 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Task
-    fields = ['name', 'description', 'energy']
+    fields = ['name', 'description', 'energy', 'completed']
     template_name = 'task_edit.html'
     success_url = reverse_lazy('task-list')
+
+    def test_func(self):
+        task = self.get_object()
+        return task.user == self.request.user
+
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('task-list')
 
+
 class TaskDeleteConfirmView(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('task-list')
     template_name = 'task_confirm_delete.html'
+
+
+class TaskCompleteView(View):
+    def post(self, request, *args, **kwargs):
+        print('TaskCompleteView is called')
+        task = Task.objects.get(pk=kwargs['pk'])
+        task.completed = request.POST.get('completed') == 'on'
+        task.save()
+        return redirect('task-list')
