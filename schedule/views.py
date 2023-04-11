@@ -1,4 +1,5 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
+from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
@@ -51,8 +52,26 @@ class TaskDeleteConfirmView(LoginRequiredMixin, DeleteView):
 
 class TaskCompleteView(View):
     def post(self, request, *args, **kwargs):
-        print('TaskCompleteView is called')
         task = Task.objects.get(pk=kwargs['pk'])
         task.completed = request.POST.get('completed') == 'on'
         task.save()
         return redirect('task-list')
+
+
+class TaskSelectView(View):
+    def post(self, request, *args, **kwargs):
+        task = Task.objects.get(pk=kwargs['pk'])
+        task.selected = request.POST.get('selected') == 'on'
+        task.save()
+        return redirect('task-list')
+
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            selected_tasks = Task.objects.filter(selected=True)
+            context['selected_tasks'] = selected_tasks
+        return context

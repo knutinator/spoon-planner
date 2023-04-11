@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from schedule.views import TaskListView, TaskCreateView, TaskCompleteView
 from schedule.views import TaskUpdateView, TaskDeleteView, TaskDeleteConfirmView
+from schedule.views import TaskSelectView, HomeView
+
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
@@ -30,5 +32,6 @@ urlpatterns = [
     path('<int:pk>/delete/confirm/', TaskDeleteConfirmView.as_view(), name='task-confirm-delete'),
     path('<int:pk>/complete/', TaskCompleteView.as_view(), name='task-complete'),
     path('<int:pk>/update/', TaskUpdateView.as_view(), name='task-update'),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('<int:pk>/select/', TaskSelectView.as_view(), name='task-select'),
+    path('', HomeView.as_view(), name='home'),
 ]

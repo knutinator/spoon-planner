@@ -13,8 +13,10 @@
     <header>
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/tasks/">Tasks</a></li>
+          <p>SpoonPlanner</p>
+          {% if user.is_authenticated %}
+<!-- this content hidden unless logged in -->
+          {% endif %}
         </ul>
       </nav>
     </header>
@@ -24,7 +26,7 @@
     </main>
 
     <footer>
-      <p>&copy; 2023 SpoonPlanner</p>
+
     </footer>
   </body>
 </html>

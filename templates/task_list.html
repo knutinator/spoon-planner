@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Task List</h1>
+  <h1>All Tasks</h1>
+  <p><a href="/">View Today's Tasks</a></p>
   <ul>
     {% for task in object_list %}
       <li>
         <strong>{{ task.name }}</strong> - {{ task.description }} ({{ task.energy }} spoons) 
-        <form method="post" action="{% url 'task-complete' task.pk %}">
-          {% csrf_token %}
-          <input type="checkbox" name="completed" value="on" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
-        </form>
+      
         <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
         <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
-        <br>
+        <form method="post" action="{% url 'task-complete' task.pk %}">
+          {% csrf_token %}
+          <input type="checkbox" name="completed" value="on" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>Completed
+        </form>
+        <form method="post" action="{% url 'task-select' task.pk %}">
+          {% csrf_token %}
+          <input type="checkbox" name="selected" value="on" onchange="this.form.submit()" {% if task.selected %}checked{% endif %}>Add to Today
+        </form>
         <br>
       </li>
     {% empty %}

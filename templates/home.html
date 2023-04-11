@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+
+{% block title %}Today's Tasks{% endblock %}
+
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
-<a href="/account/signup">Create new user</a>
+
+    {% if user.is_authenticated %}
+        <h1>Today's Tasks</h1>
+            <p><a href="/tasks/">View All Tasks</a></p>
+            Hi {{ user.username }}!
+<!-- Display selected tasks -->
+<ul>
+    {% for task in selected_tasks %}
+        <li>{{ task.name }} - {{ task.description }} ({{ task.energy }} spoons) </li>
+    {% endfor %}
+</ul>
+
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Log In</a>
+        <a href="/account/signup">Create new user</a>
+    {% endif %}
 {% endblock %}
