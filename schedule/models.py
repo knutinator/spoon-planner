@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.validators import RangeMinValueValidator, RangeMaxValueValidator
 from psycopg2.extras import NumericRange
+from django.utils import timezone
 
 
 class Task(models.Model):
@@ -12,3 +13,7 @@ class Task(models.Model):
     energy = models.IntegerField(choices=list(zip(range(1, 11), range(1, 11))), default=5)
     completed = models.BooleanField(default=False)
     selected = models.BooleanField(default=False)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ['completed', '-created_at']
