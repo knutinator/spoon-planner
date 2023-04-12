@@ -115,3 +115,33 @@ class EnergyInputView(LoginRequiredMixin, FormView):
     template_name = 'energy_input.html'
     form_class = DailyEnergyForm
     success_url = reverse_lazy('home')
+
+    def get_initial(self):
+        # fetch the current daily energy object for the current user
+        try:
+            daily_energy = DailyEnergy.objects.filter(user=self.request.user).latest('created_at')
+        except DailyEnergy.DoesNotExist:
+            daily_energy = None
+
+        # return a dictionary of initial values for the form
+        initial = super().get_initial()
+        if daily_energy:
+            initial['user_energy'] = daily_energy.user_energy
+        return initial
+
+        # extracts user id and energy input from form
+    def form_valid(self, form):
+        user_energy = form.cleaned_data['user_energy']
+        user = self.request.user
+
+        # gets all the energy input objects made today
+        daily_energy_list = DailyEnergy.objects.filter(user=user, created_at__date=timezone.now().date())
+
+        # loops through the objects and sets them to the inputted value
+        for daily_energy in daily_energy_list:
+            daily_energy.user_energy = user_energy
+            daily_energy.save()
+
+        # calls the parent class method to save the form
+        return super().form_valid(form)
+
