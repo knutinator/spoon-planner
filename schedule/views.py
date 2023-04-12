@@ -99,31 +99,33 @@ class HomeView(TemplateView):
             # sets the 'last cleared date' to the current date
             self.request.session['last_cleared_date'] = now.date().isoformat()
 
-        selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
-        total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))['total_spoons'] or 0
-        context['selected_tasks'] = selected_tasks
-        context['total_spoons'] = total_spoons
-
-
         # get latest daily energy object
-
-        try:
-            last_daily_energy = DailyEnergy.objects.filter(user=self.request.user).latest('created_at')
-        except DailyEnergy.DoesNotExist:
-            last_daily_energy = None
+        if self.request.user.is_authenticated:
+            try:
+                last_daily_energy = DailyEnergy.objects.filter(user=self.request.user).latest('created_at')
+            except DailyEnergy.DoesNotExist:
+                last_daily_energy = None
+        else:
+            pass
 
         # check if last daily energy object was created on a previous date
-        now = timezone.now()
-        if last_daily_energy is None or last_daily_energy.created_at.date() < now.date():
-            # create new daily energy object for today (resets DailyEnergy)
-            daily_energy = DailyEnergy.objects.create(user=self.request.user, created_at=now, user_energy=0)
+        if self.request.user.is_authenticated:
+            now = timezone.now()
+            if last_daily_energy is None or last_daily_energy.created_at.date() < now.date():
+                # create new daily energy object for today (resets DailyEnergy)
+                daily_energy = DailyEnergy.objects.create(user=self.request.user, created_at=now, user_energy=0)
+            else:
+                daily_energy = last_daily_energy
+            context['daily_energy'] = daily_energy
         else:
-            daily_energy = last_daily_energy
-        context['daily_energy'] = daily_energy
+            pass
 
-        # calculate surplus/deficit of energy
-        energy_diff = daily_energy.user_energy - total_spoons
-        context['energy_diff'] = energy_diff
+        if self.request.user.is_authenticated:
+            # calculate surplus/deficit of energy
+            energy_diff = daily_energy.user_energy - total_spoons
+            context['energy_diff'] = energy_diff
+        else:
+            pass
 
         return context
 
