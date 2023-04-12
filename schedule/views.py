@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from datetime import datetime
 from .models import Task, DailyEnergy
 from .forms import DailyEnergyForm
 
@@ -81,7 +82,31 @@ class HomeView(TemplateView):
             context['selected_tasks'] = selected_tasks
             context['total_spoons'] = total_spoons
 
+        # Clear selected tasks each night
+        now = timezone.now()
+        last_cleared_date = self.request.session.get('last_cleared_date')
+        if last_cleared_date is None:
+            # if last_cleared_date is not set in the session, set it to today's date
+            last_cleared_date = now.date()
+        else:
+            last_cleared_date = datetime.strptime(last_cleared_date, '%Y-%m-%d').date()
+
+        if last_cleared_date < now.date():
+            # gets the tasks that were selected by the user
+            selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
+            # sets them to unselected (which removes them from today's tasks)
+            selected_tasks.update(selected=False)
+            # sets the 'last cleared date' to the current date
+            self.request.session['last_cleared_date'] = now.date().isoformat()
+
+        selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
+        total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))['total_spoons'] or 0
+        context['selected_tasks'] = selected_tasks
+        context['total_spoons'] = total_spoons
+
+
         # get latest daily energy object
+
         try:
             last_daily_energy = DailyEnergy.objects.filter(user=self.request.user).latest('created_at')
         except DailyEnergy.DoesNotExist:
@@ -144,4 +169,3 @@ class EnergyInputView(LoginRequiredMixin, FormView):
 
         # calls the parent class method to save the form
         return super().form_valid(form)
-
