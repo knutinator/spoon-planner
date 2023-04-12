@@ -6,7 +6,7 @@ from django.utils import timezone
 
 
 class Task(models.Model):
-    # associates the task with the user that created it. If a user is deleted, also deletes all their created task
+    # associates the task with the user that created it. If a user is deleted, also deletes all their created tasks
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
@@ -17,3 +17,9 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['completed', '-created_at']
+
+
+class DailyEnergy(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_energy = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)

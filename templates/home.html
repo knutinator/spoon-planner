@@ -10,6 +10,10 @@
         <h1>Today's Tasks</h1>
             <p><a href="/tasks/">View All Tasks</a></p>
             Hi {{ user.username }}!
+            {% if daily_energy %}
+                <p>Your available energy for today: {{ daily_energy }} spoons</p>
+            {% endif %}
+            <p><a href="/energy_input/">Input today's energy</a></p>
 <!-- Display selected tasks -->
 <ul>
 

@@ -3,7 +3,9 @@ from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Task
+from .models import Task, DailyEnergy
+from django.views.generic.edit import FormView
+from .forms import DailyEnergyForm
 
 
 class TaskListView(LoginRequiredMixin, ListView):
@@ -74,6 +76,13 @@ class HomeView(TemplateView):
         if self.request.user.is_authenticated:
             selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
             context['selected_tasks'] = selected_tasks
+        
+        try:
+            daily_energy = DailyEnergy.objects.filter(user=self.request.user).order_by('-created_at').first()
+            context['daily_energy'] = daily_energy.user_energy
+        except DailyEnergy.DoesNotExist:
+            pass
+
         return context
 
 
@@ -83,3 +92,14 @@ class ClearTodaysTasks(View):
     def post(self, request, *args, **kwargs):
         Task.objects.filter(selected=True, user=request.user).update(selected=False)
         return redirect('home')
+
+
+class EnergyInputView(LoginRequiredMixin, FormView):
+    template_name = 'energy_input.html'
+    form_class = DailyEnergyForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
