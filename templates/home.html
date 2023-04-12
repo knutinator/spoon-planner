@@ -15,6 +15,8 @@
 
     {% for task in selected_tasks %}
         <li>{{ task.name }} - {{ task.description }} ({{ task.energy }} spoons) </li>
+        {% empty %}
+        <li>No tasks scheduled for today.</li>
     {% endfor %}
 </ul>
 <form method="post" action="{% url 'clear-selected' %}">
