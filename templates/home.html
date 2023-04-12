@@ -16,13 +16,15 @@
             <p><a href="/energy_input/">Input today's energy</a></p>
 <!-- Display selected tasks -->
 <ul>
-
     {% for task in selected_tasks %}
         <li>{{ task.name }} - {{ task.description }} ({{ task.energy }} spoons) </li>
         {% empty %}
         <li>No tasks scheduled for today.</li>
     {% endfor %}
 </ul>
+<!-- Calculate total energy cost -->
+<p>Energy needed for today's tasks: {{ total_spoons }}</p>
+
 <form method="post" action="{% url 'clear-selected' %}">
     {% csrf_token %}
     <button type="submit">Clear Today's Schedule</button>

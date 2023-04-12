@@ -1,10 +1,11 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.views.generic import TemplateView
+from django.views.generic.edit import FormView
+from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Task, DailyEnergy
-from django.views.generic.edit import FormView
 from .forms import DailyEnergyForm
 
 
@@ -75,8 +76,10 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
+            total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))['total_spoons'] or 0
             context['selected_tasks'] = selected_tasks
-        
+            context['total_spoons'] = total_spoons
+
         try:
             daily_energy = DailyEnergy.objects.filter(user=self.request.user).order_by('-created_at').first()
             context['daily_energy'] = daily_energy.user_energy
