@@ -4,6 +4,11 @@
   <h1>All Tasks</h1>
   <p><a href="/">View Today's Tasks</a></p>
   <ul>
+    <li>
+      <a href="{% url 'task-create' %}" class="btn btn-success">Create New Task</a>
+      <br>
+      <br>
+    </li>
     {% for task in object_list %}
       <li>
         <strong>{{ task.name }}</strong> - {{ task.description }} ({{ task.energy }} spoons) 
@@ -23,11 +28,6 @@
     {% empty %}
       <li>No tasks found.</li>
     {% endfor %}
-  </ul>
-  <ul>
-    <li>
-      <a href="{% url 'task-create' %}" class="btn btn-success">New Task</a>
-    </li>
   </ul>
 
 {% endblock %}

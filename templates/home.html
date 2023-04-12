@@ -12,10 +12,15 @@
             Hi {{ user.username }}!
 <!-- Display selected tasks -->
 <ul>
+
     {% for task in selected_tasks %}
         <li>{{ task.name }} - {{ task.description }} ({{ task.energy }} spoons) </li>
     {% endfor %}
 </ul>
+<form method="post" action="{% url 'clear-selected' %}">
+    {% csrf_token %}
+    <button type="submit">Clear Today's Schedule</button>
+  </form>
     {% else %}
         <p>You are not logged in</p>
 

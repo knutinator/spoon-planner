@@ -75,3 +75,11 @@ class HomeView(TemplateView):
             selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
             context['selected_tasks'] = selected_tasks
         return context
+
+
+class ClearTodaysTasks(View):
+    template_name = 'home.html'
+
+    def post(self, request, *args, **kwargs):
+        Task.objects.filter(selected=True, user=request.user).update(selected=False)
+        return redirect('home')
