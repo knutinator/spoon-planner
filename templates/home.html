@@ -23,7 +23,11 @@
     {% endfor %}
 </ul>
 <!-- Calculate total energy cost -->
-<p>Energy needed for today's tasks: {{ total_spoons }}</p>
+{% if energy_diff >= 0 %}
+    <p>Surplus energy: {{ energy_diff }} spoons</p>
+{% else %}
+    <p>Deficit energy: {{ energy_diff }} spoons</p>
+{% endif %}
 
 <form method="post" action="{% url 'clear-selected' %}">
     {% csrf_token %}

@@ -86,6 +86,9 @@ class HomeView(TemplateView):
         except DailyEnergy.DoesNotExist:
             pass
 
+        energy_diff = daily_energy.user_energy - total_spoons
+        context['energy_diff'] = energy_diff
+
         return context
 
 
