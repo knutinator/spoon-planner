@@ -11,7 +11,7 @@
             <p><a href="/tasks/">View All Tasks</a></p>
             Hi {{ user.username }}!
             {% if daily_energy %}
-                <p>Your available energy for today: {{ daily_energy }} spoons</p>
+                <p>Your available energy for today: {{ daily_energy.user_energy }} spoons</p>
             {% endif %}
             <p><a href="/energy_input/">Input today's energy</a></p>
 <!-- Display selected tasks -->

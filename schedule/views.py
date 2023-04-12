@@ -5,6 +5,7 @@ from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 from .models import Task, DailyEnergy
 from .forms import DailyEnergyForm
 
@@ -80,12 +81,22 @@ class HomeView(TemplateView):
             context['selected_tasks'] = selected_tasks
             context['total_spoons'] = total_spoons
 
+        # get latest daily energy object
         try:
-            daily_energy = DailyEnergy.objects.filter(user=self.request.user).order_by('-created_at').first()
-            context['daily_energy'] = daily_energy.user_energy
+            last_daily_energy = DailyEnergy.objects.filter(user=self.request.user).latest('created_at')
         except DailyEnergy.DoesNotExist:
-            pass
+            last_daily_energy = None
 
+        # check if last daily energy object was created on a previous date
+        now = timezone.now()
+        if last_daily_energy is None or last_daily_energy.created_at.date() < now.date():
+            # create new daily energy object for today (resets DailyEnergy)
+            daily_energy = DailyEnergy.objects.create(user=self.request.user, created_at=now, user_energy=0)
+        else:
+            daily_energy = last_daily_energy
+        context['daily_energy'] = daily_energy
+
+        # calculate surplus/deficit of energy
         energy_diff = daily_energy.user_energy - total_spoons
         context['energy_diff'] = energy_diff
 
@@ -104,8 +115,3 @@ class EnergyInputView(LoginRequiredMixin, FormView):
     template_name = 'energy_input.html'
     form_class = DailyEnergyForm
     success_url = reverse_lazy('home')
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        form.save()
-        return super().form_valid(form)
