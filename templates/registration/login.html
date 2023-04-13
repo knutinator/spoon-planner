@@ -13,9 +13,9 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Log In</button>
+    <button type="submit" class="btn btn-primary float-start">Log In</button>
 </form>
-<a href="/account/signup">Create new user</a>
+<a href="/account/signup" class="btn btn-success float-start mx-2">Create new user</a>
           </div>
         </div>
       </div>
