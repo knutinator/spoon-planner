@@ -81,8 +81,9 @@ class HomeView(TemplateView):
         if self.request.user.is_authenticated:
             selected_tasks = Task.objects.filter(
                 selected=True, user=self.request.user)
-            total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))
-            ['total_spoons'] or 0
+            total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))\
+                .get('total_spoons') or 0
+
             context['selected_tasks'] = selected_tasks
             context['total_spoons'] = total_spoons
 
@@ -158,16 +159,15 @@ class EnergyInputView(LoginRequiredMixin, FormView):
         try:
             daily_energy = DailyEnergy.objects.filter(
                 user=self.request.user).latest('created_at')
+            user_energy = daily_energy.user_energy
         except DailyEnergy.DoesNotExist:
-            daily_energy = None
+            user_energy = 0
 
-        # return a dictionary of initial values for the form
-        initial = super().get_initial()
-        if daily_energy:
-            initial['user_energy'] = daily_energy.user_energy
+        # return the user energy value as the initial value for the form
+        initial = {'user_energy': user_energy}
+
         return initial
 
-        # extracts user id and energy input from form
     def form_valid(self, form):
         user_energy = form.cleaned_data['user_energy']
         user = self.request.user
@@ -181,5 +181,15 @@ class EnergyInputView(LoginRequiredMixin, FormView):
             daily_energy.user_energy = user_energy
             daily_energy.save()
 
-        # calls the parent class method to save the form
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            daily_energy = DailyEnergy.objects.filter(
+                user=self.request.user).latest('created_at')
+            context['daily_energy'] = daily_energy
+        except DailyEnergy.DoesNotExist:
+            context['daily_energy'] = None
+
+        return context
