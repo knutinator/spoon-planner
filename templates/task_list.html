@@ -26,7 +26,7 @@
       </form>
         <p class="card-text"><strong>Spoons needed: {{ task.energy }}</strong></p>
                                 
-        <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm float-end mx-1">Edit</a>
+        <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm float-right mx-1">Edit</a>
         <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm float-end mx-1">Delete</a>
         <form method="post" class="float-start" action="{% url 'task-select' task.pk %}">
           {% csrf_token %}
