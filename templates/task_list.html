@@ -20,20 +20,24 @@
 
     <div class="card mb-3">
       <div class="card-body">
+        
         <h5 class="card-title">{{ task.name }}</h5>
         <p class="card-text">{{ task.description }}</p>
+      </form>
+      <form method="post" action="{% url 'task-complete' task.pk %}">
+        {% csrf_token %}
+        <input type="checkbox" name="completed" value="on" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>Completed
+      </form>
         <p class="card-text"><strong>Spoons needed: {{ task.energy }}</strong></p>
                                 
         <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
         <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
-        <form method="post" action="{% url 'task-complete' task.pk %}">
-          {% csrf_token %}
-          <input type="checkbox" name="completed" value="on" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}> Mark as Completed
-        </form>
         <form method="post" action="{% url 'task-select' task.pk %}">
           {% csrf_token %}
-          <input type="checkbox" name="selected" value="on" onchange="this.form.submit()" {% if task.selected %}checked{% endif %}> Add to Today's Tasks
-        </form>
+          <button type="submit" name="selected" value="on" class="btn btn-success btn-sm my-2 {% if task.selected %}active{% endif %}">
+            {% if task.selected %}Added{% else %}Add to Today's Tasks{% endif %}
+          </button>
+
         <br>
       </div>
     </div>
