@@ -21,7 +21,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ task.name }}</h5>
         <p class="card-text">{{ task.description }}</p>
-        <p class="card-text"><strong>Energy:</strong> {{ task.energy }}</p>
+        <p class="card-text"><strong>Spoons needed: {{ task.energy }}</strong></p>
                                 
         <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
         <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>

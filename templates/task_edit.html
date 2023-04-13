@@ -6,10 +6,9 @@
     <div class="col-12 col-md-8">
       <div class="card mb-4">
         <div class="card-header bg-primary text-white">
-          <h3 class="card-title mb-0">Today's Tasks</h3>
+          <h3 class="card-title mb-0">Edit Task</h3>
         </div>
         <div class="card-body">
-  <h3>Edit Task</h3>
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}

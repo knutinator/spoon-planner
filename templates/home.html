@@ -15,7 +15,7 @@
             {% if user.is_authenticated %}
               {% if daily_energy %}
                 <p class="mb-4 float-start">Your available energy for today: {{ daily_energy.user_energy }} spoons</p>
-                <a href="/energy_input/" class="btn btn-info float-end">Change Energy</a>
+                <a href="/energy_input/" class="btn btn-info float-end">Input today's energy</a>
               {% endif %}
               {% if selected_tasks %}
                 <div class="d-flex justify-content-between align-items-center mb-4" style="clear: both;">
@@ -30,7 +30,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ task.name }}</h5>
                       <p class="card-text">{{ task.description }}</p>
-                      <p class="card-text"><strong>Energy:</strong> {{ task.energy }}</p>
+                      <p class="card-text"><strong>Spoons needed: {{ task.energy }}</strong></p>
                     </div>
                   </div>
                 {% endfor %}
