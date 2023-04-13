@@ -81,8 +81,8 @@ class HomeView(TemplateView):
         if self.request.user.is_authenticated:
             selected_tasks = Task.objects.filter(
                 selected=True, user=self.request.user)
-            total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))\
-                .get('total_spoons') or 0
+            total_spoons = selected_tasks.aggregate(
+                total_spoons=Sum('energy')).get('total_spoons') or 0
 
             context['selected_tasks'] = selected_tasks
             context['total_spoons'] = total_spoons
