@@ -43,8 +43,10 @@
 
               {% if energy_diff >= 0 %}
                 <p>Surplus energy: {{ energy_diff }} spoons</p>
+                <p>Great! Today you have enough energy for your tasks.</p>
               {% else %}
                 <p>Deficit energy: {{ energy_diff }} spoons</p>
+                <p>Hm... Consider moving some tasks to another day?</p>
               {% endif %}
             {% else %}
               <p>You are not logged in.</p>
