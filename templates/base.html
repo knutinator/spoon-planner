@@ -20,7 +20,7 @@
       <nav class="col-12 text-center pt-4">
 
         <strong><a href="{% url 'home' %}">SpoonPlanner</a></strong>
-      
+
         {% if user.is_authenticated %}
 
         <span>- {{ user.username }} -</span>

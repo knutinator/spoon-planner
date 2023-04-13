@@ -10,11 +10,11 @@
         </div>
         <div class="card-body">
 
-  <form action="{% url 'task-delete' object.pk %}" method="post">
-    {% csrf_token %}
-    <a href="#" class="btn btn-danger" onclick="this.closest('form').submit()">Delete</a>
-    <a href="{% url 'task-list' %}" class="btn btn-secondary">Cancel</a>
-  </form>
+          <form action="{% url 'task-delete' object.pk %}" method="post">
+            {% csrf_token %}
+            <a href="#" class="btn btn-danger" onclick="this.closest('form').submit()">Delete</a>
+            <a href="{% url 'task-list' %}" class="btn btn-secondary">Cancel</a>
+          </form>
         </div>
       </div>
     </div>

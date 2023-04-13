@@ -30,7 +30,7 @@
         <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm float-end mx-1">Delete</a>
         <form method="post" class="float-start" action="{% url 'task-select' task.pk %}">
           {% csrf_token %}
-          <button type="submit" name="selected" value="on" class="btn btn-success btn-sm"{% if task.selected %}active{% endif %}">
+          <button type="submit" name="selected" value="on" class="btn btn-success btn-sm"{% if task.selected %}active{% endif %}>
             {% if task.selected %}Added{% else %}Add to schedule{% endif %}
           </button>
 

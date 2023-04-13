@@ -1,11 +1,12 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
-from django.views.generic import TemplateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, View
 from django.views.generic.edit import FormView
 from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
+from django.contrib import messages
 from datetime import datetime
 from .models import Task, DailyEnergy
 from .forms import DailyEnergyForm
@@ -17,8 +18,9 @@ class TaskListView(LoginRequiredMixin, ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        queryset = super().get_queryset()  # accesses the method of the parent class
-        queryset = queryset.filter(user=self.request.user)  # gets only the tasks in the database created by the current user
+        queryset = super().get_queryset()  # accesses the method of the parent
+        # gets only the tasks in the database created by the current user
+        queryset = queryset.filter(user=self.request.user)
         return queryset
 
 
@@ -28,7 +30,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('task-list')
     template_name = 'task_create.html'
 
-    def form_valid(self, form):  # marks the created task with the current username
+    def form_valid(self, form):  # marks the created task with the  username
         form.instance.user = self.request.user
         return super().form_valid(form)
 
@@ -77,8 +79,10 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
-            selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
-            total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))['total_spoons'] or 0
+            selected_tasks = Task.objects.filter(
+                selected=True, user=self.request.user)
+            total_spoons = selected_tasks.aggregate(total_spoons=Sum('energy'))
+            ['total_spoons'] or 0
             context['selected_tasks'] = selected_tasks
             context['total_spoons'] = total_spoons
 
@@ -86,14 +90,16 @@ class HomeView(TemplateView):
         now = timezone.now()
         last_cleared_date = self.request.session.get('last_cleared_date')
         if last_cleared_date is None:
-            # if last_cleared_date is not set in the session, set it to today's date
+            # if last_cleared_date is not set in the session, set to today
             last_cleared_date = now.date()
         else:
-            last_cleared_date = datetime.strptime(last_cleared_date, '%Y-%m-%d').date()
+            last_cleared_date = datetime.strptime(
+                last_cleared_date, '%Y-%m-%d').date()
 
         if last_cleared_date < now.date():
             # gets the tasks that were selected by the user
-            selected_tasks = Task.objects.filter(selected=True, user=self.request.user)
+            selected_tasks = Task.objects.filter(
+                selected=True, user=self.request.user)
             # sets them to unselected (which removes them from today's tasks)
             selected_tasks.update(selected=False)
             # sets the 'last cleared date' to the current date
@@ -102,7 +108,8 @@ class HomeView(TemplateView):
         # get latest daily energy object
         if self.request.user.is_authenticated:
             try:
-                last_daily_energy = DailyEnergy.objects.filter(user=self.request.user).latest('created_at')
+                last_daily_energy = DailyEnergy.objects.filter(
+                    user=self.request.user).latest('created_at')
             except DailyEnergy.DoesNotExist:
                 last_daily_energy = None
         else:
@@ -111,9 +118,11 @@ class HomeView(TemplateView):
         # check if last daily energy object was created on a previous date
         if self.request.user.is_authenticated:
             now = timezone.now()
-            if last_daily_energy is None or last_daily_energy.created_at.date() < now.date():
+            if last_daily_energy is None or\
+                    last_daily_energy.created_at.date() < now.date():
                 # create new daily energy object for today (resets DailyEnergy)
-                daily_energy = DailyEnergy.objects.create(user=self.request.user, created_at=now, user_energy=0)
+                daily_energy = DailyEnergy.objects.create(
+                    user=self.request.user, created_at=now, user_energy=0)
             else:
                 daily_energy = last_daily_energy
             context['daily_energy'] = daily_energy
@@ -134,7 +143,8 @@ class ClearTodaysTasks(View):
     template_name = 'home.html'
 
     def post(self, request, *args, **kwargs):
-        Task.objects.filter(selected=True, user=request.user).update(selected=False)
+        Task.objects.filter(
+            selected=True, user=request.user).update(selected=False)
         return redirect('home')
 
 
@@ -146,7 +156,8 @@ class EnergyInputView(LoginRequiredMixin, FormView):
     def get_initial(self):
         # fetch the current daily energy object for the current user
         try:
-            daily_energy = DailyEnergy.objects.filter(user=self.request.user).latest('created_at')
+            daily_energy = DailyEnergy.objects.filter(
+                user=self.request.user).latest('created_at')
         except DailyEnergy.DoesNotExist:
             daily_energy = None
 
@@ -162,7 +173,8 @@ class EnergyInputView(LoginRequiredMixin, FormView):
         user = self.request.user
 
         # gets all the energy input objects made today
-        daily_energy_list = DailyEnergy.objects.filter(user=user, created_at__date=timezone.now().date())
+        daily_energy_list = DailyEnergy.objects.filter(
+            user=user, created_at__date=timezone.now().date())
 
         # loops through the objects and sets them to the inputted value
         for daily_energy in daily_energy_list:
