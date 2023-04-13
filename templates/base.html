@@ -22,8 +22,8 @@
         <strong><a href="{% url 'home' %}">SpoonPlanner Beta</a></strong>
       
         {% if user.is_authenticated %}
-        /////
-        <span>{{ user.username }}</span>
+
+        <span> {{ user.username }}</span>
         <a href="{% url 'logout' %}">Log Out</a>
         {% else %}
         <a href="{% url 'login' %}">Log In</a>

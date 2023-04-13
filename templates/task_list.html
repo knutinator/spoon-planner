@@ -31,7 +31,7 @@
         <form method="post" class="float-start" action="{% url 'task-select' task.pk %}">
           {% csrf_token %}
           <button type="submit" name="selected" value="on" class="btn btn-success btn-sm"{% if task.selected %}active{% endif %}">
-            {% if task.selected %}Added{% else %}Add to Today's Tasks{% endif %}
+            {% if task.selected %}Added{% else %}Add to schedule{% endif %}
           </button>
 
         <br>

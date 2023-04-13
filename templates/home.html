@@ -17,16 +17,16 @@
           <div class="card-body">
             {% if user.is_authenticated %}
               {% if daily_energy %}
-                <p class="mb-4 float-start">Your available energy for today: {{ daily_energy.user_energy }} spoons</p>
-                <a href="/energy_input/" class="btn btn-info float-end">Input today's energy</a>
+                <p class="mb-4 float-start">Energy: {{ daily_energy.user_energy }} spoons</p>
+                <a href="/energy_input/" class="btn btn-info float-end">Input energy</a>
               {% endif %}
               {% if selected_tasks %}
                 <div class="d-flex justify-content-between align-items-center mb-4" style="clear: both;">
                   <h5 class="card-subtitle mb-2">{{ selected_tasks|length }} Tasks</h5>
-                  <form method="post" action="{% url 'clear-selected' %}">
-                    {% csrf_token %}
 
-                  </form>
+
+
+
                 </div>
                 {% for task in selected_tasks %}
                   <div class="card mb-3">
@@ -42,7 +42,7 @@
                   </div>
                 {% endfor %}
               {% else %}
-                <p style="clear: both;"><strong>No tasks scheduled for today.</strong></p>
+                <p style="clear: both;" class="py-5"><strong>No tasks scheduled for today.</strong></p>
               {% endif %}
 
               {% if energy_diff >= 0 %}
@@ -63,7 +63,7 @@
 
             <form method="post" action="{% url 'clear-selected' %}">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-secondary mb-4 float-left mx-2">Clear Today's Schedule</button>
+                <button type="submit" class="btn btn-secondary mb-4 float-left mx-2">Clear Schedule</button>
             </form>
             {% endif %}
           </div>
