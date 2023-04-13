@@ -33,7 +33,11 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ task.name }}</h5>
                       <p class="card-text">{{ task.description }}</p>
-                      <p class="card-text"><strong>Spoons needed: {{ task.energy }}</strong></p>
+                      <p class="card-text float-start"><strong>Spoons needed: {{ task.energy }}</strong></p>
+                      <form class="float-end" method="post" action="{% url 'task-complete' task.pk %}">
+                        {% csrf_token %}
+                        <input type="checkbox" name="completed" value="on" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}> Completed
+                      </form>
                     </div>
                   </div>
                 {% endfor %}

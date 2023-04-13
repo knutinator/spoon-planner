@@ -60,7 +60,7 @@ class TaskCompleteView(View):
         task = Task.objects.get(pk=kwargs['pk'])
         task.completed = request.POST.get('completed') == 'on'
         task.save()
-        return redirect('task-list')
+        return redirect('home')
 
 
 class TaskSelectView(View):

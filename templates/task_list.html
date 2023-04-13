@@ -24,10 +24,6 @@
         <h5 class="card-title">{{ task.name }}</h5>
         <p class="card-text">{{ task.description }}</p>
       </form>
-      <form method="post" action="{% url 'task-complete' task.pk %}">
-        {% csrf_token %}
-        <input type="checkbox" name="completed" value="on" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>Completed
-      </form>
         <p class="card-text"><strong>Spoons needed: {{ task.energy }}</strong></p>
                                 
         <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
