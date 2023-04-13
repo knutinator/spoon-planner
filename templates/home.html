@@ -4,13 +4,14 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Today's Tasks</h1>
+    {% if user.is_authenticated %}
+    {% if daily_energy %}
+        <p>Your available energy for today: {{ daily_energy.user_energy }} spoons  <a href="/energy_input/">Change</a> </p>
+    {% endif %}
+    {% endif %}
+        <h3>Today's Tasks</h3>
         <p><a href="/tasks/">View All Tasks</a></p>
-        Hi {{ user.username }}!
-        {% if daily_energy %}
-            <p>Your available energy for today: {{ daily_energy.user_energy }} spoons</p>
-        {% endif %}
-        <p><a href="/energy_input/">Input today's energy</a></p>
+
 
         {% if selected_tasks %}
             <ul>

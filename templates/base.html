@@ -3,45 +3,61 @@
 <!DOCTYPE html>
 <html lang="en">
 
-</html>
-<html>
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <style>
+    /* Custom styles */
+    body {
+      background-color: #f2f2f2;
+    }
+    main {
+      background-color: #fff;
+      padding: 20px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul>
-        <p><strong><a href="{% url 'home' %}">SpoonPlanner</a></strong>
+     <div class="container">
+    <header class="row">
+      <nav class="col-md-12">
+        <ul class="list-inline">
+          <li class="h2"><strong><a href="{% url 'home' %}">SpoonPlanner</a></strong></li>
           {% if user.is_authenticated %}
-          {{ user.username }}
-          <a href="{% url 'logout' %}">Log Out</a>
+          <li>{{ user.username }}</li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
-          <a href="{% url 'login' %}">Log In</a>
+          <li><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
-        </p>
-      </ul>
-    </nav>
-  </header>
+        </ul>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+      </nav>
+    </header>
 
-  <footer>
+    <main class="row">
+      <div class="col-md-12">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
 
-  </footer>
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <footer class="row">
+      <div class="col-md-12">
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body>
 
 </html>
