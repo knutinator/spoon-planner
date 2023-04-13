@@ -26,11 +26,11 @@
       </form>
         <p class="card-text"><strong>Spoons needed: {{ task.energy }}</strong></p>
                                 
-        <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm">Edit</a>
-        <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
-        <form method="post" action="{% url 'task-select' task.pk %}">
+        <a href="{% url 'task-edit' task.pk %}" class="btn btn-primary btn-sm float-end mx-1">Edit</a>
+        <a href="{% url 'task-confirm-delete' task.pk %}" class="btn btn-danger btn-sm float-end mx-1">Delete</a>
+        <form method="post" class="float-start" action="{% url 'task-select' task.pk %}">
           {% csrf_token %}
-          <button type="submit" name="selected" value="on" class="btn btn-success btn-sm my-2 {% if task.selected %}active{% endif %}">
+          <button type="submit" name="selected" value="on" class="btn btn-success btn-sm"{% if task.selected %}active{% endif %}">
             {% if task.selected %}Added{% else %}Add to Today's Tasks{% endif %}
           </button>
 
