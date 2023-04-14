@@ -6,7 +6,7 @@
         <div class="col-12 col-md-8">
             <div class="card mb-4">
                 <!-- top blue bar -->
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-dark text-white">
                     {% if user.is_authenticated %}
                     <h3 class="card-title mb-0 float-start">Today's Tasks</h3>
                     <a href="{% url 'task-list' %}" class="float-end text-light">View all tasks</a>
@@ -21,18 +21,19 @@
                     {% endif %}
                     {% if selected_tasks %}
                     <div class="d-flex justify-content-between align-items-center mb-4" style="clear: both;">
-                        <h5 class="card-subtitle mb-2">{{ selected_tasks|length }} Tasks</h5>
+                        <p class="card-subtitle font-weight-bold">{{ selected_tasks|length }} Tasks:</p>
                     </div>
                     <!-- list of selected tasks -->
                     {% for task in selected_tasks %}
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">{{ task.name }}</h5>
+                            <h3 class="card-title">{{ task.name }}</h3>
                             <p class="card-text">{{ task.description }}</p>
                             <p class="card-text float-start"><strong>Spoons needed: {{ task.energy }}</strong></p>
                             <form class="float-end" method="post" action="{% url 'task-complete' task.pk %}">
                                 {% csrf_token %}
                                 <input type="checkbox" name="completed" value="on" onchange="this.form.submit()"
+                                aria-label="Completed" 
                                     {% if task.completed %}checked{% endif %}> Completed
                             </form>
                         </div>

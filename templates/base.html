@@ -13,17 +13,17 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
-<body style="background-color: #ededed">
+<body class="bg-secondary">
     <div class="container container-box">
         <header class="row">
             <!-- logo and user info -->
             <nav class="col-12 text-center pt-4">
-                <strong><a href="{% url 'home' %}">SpoonPlanner</a></strong>
+                <strong><a href="{% url 'home' %}" class="text-white">SpoonPlanner</a></strong>
                 {% if user.is_authenticated %}
-                <span>- {{ user.username }} -</span>
-                <a href="{% url 'logout' %}">Log Out</a>
+                <span class="text-white">- {{ user.username }} -</span>
+                <a href="{% url 'logout' %}" class="text-white">Log Out</a>
                 {% else %}
-                <a href="{% url 'login' %}">Log In</a>
+                <a href="{% url 'login' %}" class="text-white">Log In</a>
                 {% endif %}
             </nav>
         </header>
@@ -38,7 +38,7 @@
     </script>
 </body>
 <footer class="row">
-    <a href="https://en.wikipedia.org/wiki/Spoon_theory" target="_blank" class="col-12 text-center text-muted mb-4">About
+    <a href="https://en.wikipedia.org/wiki/Spoon_theory" target="_blank" class="col-12 text-center text-white mb-4">About
         Spoon Theory</a>
 </footer>
 
