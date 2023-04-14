@@ -5,13 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-8">
             <div class="card mb-4">
+                <!-- top blue bar -->
                 <div class="card-header bg-primary text-white">
                     {% if user.is_authenticated %}
                     <h3 class="card-title mb-0 float-start">Today's Tasks</h3>
                     <a href="{% url 'task-list' %}" class="float-end text-light">View all tasks</a>
                     {% endif %}
-
                 </div>
+                <!-- main content -->
                 <div class="card-body">
                     {% if user.is_authenticated %}
                     {% if daily_energy %}
@@ -21,8 +22,8 @@
                     {% if selected_tasks %}
                     <div class="d-flex justify-content-between align-items-center mb-4" style="clear: both;">
                         <h5 class="card-subtitle mb-2">{{ selected_tasks|length }} Tasks</h5>
-
                     </div>
+                    <!-- list of selected tasks -->
                     {% for task in selected_tasks %}
                     <div class="card mb-3">
                         <div class="card-body">
@@ -40,7 +41,7 @@
                     {% else %}
                     <p style="clear: both;" class="py-5"><strong>No tasks scheduled for today.</strong></p>
                     {% endif %}
-
+                    <!-- message depending on surplus/deficit -->
                     {% if energy_diff >= 0 %}
                     <p>Surplus energy: {{ energy_diff }} spoons</p>
                     <p>Great! Today you have enough energy for your tasks.</p>
@@ -54,9 +55,9 @@
                     {% endif %}
                 </div>
                 <div class="card-footer">
+                    <!-- bottom bar -->
                     {% if user.is_authenticated %}
                     <a href="/tasks/" class="btn btn-primary float-start">Add Tasks</a>
-
                     <form method="post" action="{% url 'clear-selected' %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-secondary mb-4 float-left mx-2">Clear Schedule</button>

@@ -6,10 +6,10 @@
         <div class="col-12 col-md-8">
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
+                    <!-- allows user to log in -->
                     <h3 class="card-title mb-0">Log In</h3>
                 </div>
                 <div class="card-body">
-
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
