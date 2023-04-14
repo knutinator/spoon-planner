@@ -109,6 +109,7 @@ Lastly, after all neccesary functionality was implemented, the app was styled in
 - Django framework
 - PostgreSQL database (ElephantSQL)
 - HTML/CSS (Bootstrap)
+- GitHub/Heroku (For deployment)
 
 ### Database
 
