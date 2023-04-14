@@ -135,7 +135,10 @@ HTML was tested using the official W3C validator, which the site passed without 
 ### CSS
 
 CSS did not have to be tested, since the site only uses unmodified Bootstrap styling.
-<br>
+
+### RESPONSIVENESS
+
+The app was tested using a variety of resolutions in Chrome DevTools, as well as on an Android Phone. Since it was developed with mobiles in mind, the app scales witout any problems.
 
 ### MANUAL TESTING
 
