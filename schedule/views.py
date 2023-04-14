@@ -12,6 +12,7 @@ from .models import Task, DailyEnergy
 from .forms import DailyEnergyForm
 
 
+# gets a list of all tasks created by the user
 class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'task_list.html'
@@ -24,47 +25,59 @@ class TaskListView(LoginRequiredMixin, ListView):
         return queryset
 
 
+# allows the user to create a new task
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     fields = ['name', 'description', 'energy', 'completed']
+    # returns the user to the All Tasks screen after creation
     success_url = reverse_lazy('task-list')
     template_name = 'task_create.html'
 
-    def form_valid(self, form):  # marks the created task with the  username
+    # marks the created task with the username
+    def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
+# allows the user to edit an existing task
 class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Task
     fields = ['name', 'description', 'energy', 'completed']
     template_name = 'task_edit.html'
     success_url = reverse_lazy('task-list')
 
+    # Only allow users to edit tasks they have created
     def test_func(self):
         task = self.get_object()
         return task.user == self.request.user
 
 
+# allows the user to delete a task from the database
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('task-list')
 
 
+# ask for user confirmation before deleting task
 class TaskDeleteConfirmView(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('task-list')
     template_name = 'task_confirm_delete.html'
 
 
+# Allows the user to mark tasks as completed
 class TaskCompleteView(View):
     def post(self, request, *args, **kwargs):
+        # gets the Task object with corresponding primary key
         task = Task.objects.get(pk=kwargs['pk'])
+        # sets 'completed' to True
         task.completed = request.POST.get('completed') == 'on'
         task.save()
+        # reloads the page
         return redirect('home')
 
 
+# Allows the user to select tasks for today's schedule
 class TaskSelectView(View):
     def post(self, request, *args, **kwargs):
         task = Task.objects.get(pk=kwargs['pk'])
@@ -73,9 +86,11 @@ class TaskSelectView(View):
         return redirect('task-list')
 
 
+# main page (Today's Tasks)
 class HomeView(TemplateView):
     template_name = 'home.html'
 
+    # gets selected tasks and user's energy input
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
@@ -94,6 +109,7 @@ class HomeView(TemplateView):
             # if last_cleared_date is not set in the session, set to today
             last_cleared_date = now.date()
         else:
+            # error fix to avoid formatting issues
             last_cleared_date = datetime.strptime(
                 last_cleared_date, '%Y-%m-%d').date()
 
@@ -140,6 +156,7 @@ class HomeView(TemplateView):
         return context
 
 
+# allows user to manually clear today's schedule
 class ClearTodaysTasks(View):
     template_name = 'home.html'
 
@@ -149,6 +166,7 @@ class ClearTodaysTasks(View):
         return redirect('home')
 
 
+# allows user to input their daily energy level
 class EnergyInputView(LoginRequiredMixin, FormView):
     template_name = 'energy_input.html'
     form_class = DailyEnergyForm
