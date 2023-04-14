@@ -17,6 +17,7 @@
    - [Lighthouse](#lighthouse)
    - [HTML](#html)
    - [CSS](#css)
+   - [Responsiveness](#responsiveness)
    - [Manual Testing](#manual-testing)
 8. [Database Schema](#database-schema)
 9. [Credits](#credits)
