@@ -5,6 +5,22 @@
 
  The app provides a user-friendly interface that enables users to create, edit, delete, and view their tasks in an easy and intuitive way. Tasks are organized into two main categories: "Today's Tasks" and "All Tasks". The app also calculates and displays whether there will be a surplus or deficit of energy based on the input energy and the total energy needed for the scheduled tasks.
 
+## Index
+
+1. [Features](#features)
+2. [Future Features](#future-features)
+3. [Usage](#usage)
+4. [Deployment](#deployment)
+5. [Development](#development)
+6. [Technologies used](#technologies-used)
+7. [Testing](#testing)
+   - [Lighthouse](#lighthouse)
+   - [HTML](#html)
+   - [CSS](#css)
+   - [Manual Testing](#manual-testing)
+8. [Database Schema](#database-schema)
+9. [Credits](#credits)
+
 ## Features
 
 - User accounts to keep schedules safe and private
@@ -132,14 +148,10 @@ Manual tests performed:
 
 
 ## Credits
-login page inspiration: https://learndjango.com/tutorials/django-login-and-logout-tutorial
+- Coded by Jonatan Knut von Sydow as a student of Code Institute
 
-Mockup phone app image from <a href="https://www.freepik.com/free-psd/premium-mobile-phone-screen-mockup-template_3891016.htm#query=app%20mockup&position=3&from_view=keyword&track=ais">rawpixel.com</a> on Freepik
+- Login page inspiration: https://learndjango.com/tutorials/django-login-and-logout-tutorial
 
-## Authors
-
-- Jonatan Knut von Sydow
-
-## Acknowledgments
+- Mockup phone app image from <a href="https://www.freepik.com/free-psd/premium-mobile-phone-screen-mockup-template_3891016.htm#query=app%20mockup&position=3&from_view=keyword&track=ais">rawpixel.com</a> on Freepik
 
 - Read more about the [Spoon Theory](https://en.wikipedia.org/wiki/Spoon_theory), which inspired this app.
