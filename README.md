@@ -8,20 +8,28 @@
 ## Features
 
 - User accounts to keep schedules safe and private
+
 ![Login](/media/readme/login.png)
 - Create, edit, and delete tasks
+
 ![Create task](/media/readme/create.png)
 - View all tasks or just today's tasks
+
 ![Today's tasks](/media/readme/today.png)
 - Add tasks to today's tasks from the all tasks page
+
 ![Select tasks](/media/readme/add.png)
 - Mark tasks as completed
+
 ![Mark as completed](/media/readme/complete.png)
 - Input daily energy levels
+
 ![Input energy](/media/readme/energy.png)
 - View energy surplus or deficit for the day
+
 ![Surplus energy](/media/readme/surplus.png)
 - Admin accounts for testing and managing users
+
 ![Admin](/media/readme/admin.png)
 
 ## Future Features 
