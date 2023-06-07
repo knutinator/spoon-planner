@@ -5,6 +5,10 @@
 
  The app provides a user-friendly interface that enables users to create, edit, delete, and view their tasks in an easy and intuitive way. Tasks are organized into two main categories: "Today's Tasks" and "All Tasks". The app also calculates and displays whether there will be a surplus or deficit of energy based on the input energy and the total energy needed for the scheduled tasks.
 
+<br>
+
+----
+
 ## Index
 
 1. [Features](#features)
@@ -12,17 +16,22 @@
 3. [Usage](#usage)
 4. [Deployment](#deployment)
 5. [Development](#development)
-6. [Technologies used](#technologies-used)
-7. [Testing](#testing)
+6. [Wireframe mockups](#wireframe-mockups)
+7. [Technologies used](#technologies-used)
+8. [Testing](#testing)
    - [Lighthouse](#lighthouse)
    - [HTML](#html)
    - [CSS](#css)
    - [Responsiveness](#responsiveness)
    - [Manual Testing](#manual-testing)
-8. [Database Schema](#database-schema)
-9. [Credits](#credits)
+9. [Database Schema](#database-schema)
+10. [Credits](#credits)
+ 
+<br>
 
+----
 ## Features
+What follows is a description of all parts and functions of the app:
 
 - User accounts to keep schedules safe and private
 
@@ -49,6 +58,11 @@
 
 ![Admin](/media/readme/admin.png)
 
+<br>
+
+[Back to Index](#index)
+
+----
 ## Future Features 
 These are features that were considered, but not implemented into the MVP of this project.
 - Keep track of your energy levels over several days
@@ -56,6 +70,11 @@ These are features that were considered, but not implemented into the MVP of thi
 - Plan days in advance
 - Display energy cost in a clearer way (with colors)
 
+<br>
+
+[Back to Index](#index)
+
+----
 ## Usage
 
 1. Navigate to https://spoonplanner.herokuapp.com/ in your web browser
@@ -69,6 +88,11 @@ These are features that were considered, but not implemented into the MVP of thi
 9. View your predicted energy surplus/deficit for today
 10. Energy levels and "Today's Tasks" resets each midnight
 
+<br>
+
+[Back to Index](#index)
+
+----
 ## Deployment
 
 This project was deployed using GitHub. To deploy your own instance of the project, you can follow these steps:
@@ -90,7 +114,11 @@ If you'd like to deploy your project to a live server, you can follow these addi
 
 That's it! With these steps, you should have a live instance of your project running on the internet.
 
+<br>
 
+[Back to Index](#index)
+
+----
 ## Development
 
 This app was developed using an agile methodology. After an initial brainstorm period, an idea was settled upon. But, in order to fit within the scope of this project, the app was scaled down to an MVP (minimum viable product) containing just the basic functionality.
@@ -103,8 +131,34 @@ Clicking on any of the user stories reveals how each of the stories were further
 
 Developing in this manner proved to be a useful way of keeping control of exactly what needed to be done at each stage of the process.
 
-Lastly, after all neccesary functionality was implemented, the app was styled in an user-friendly and mobile-first design using Bootstrap. 
+Lastly, after all neccesary functionality was implemented, the app was styled in an user-friendly and mobile-first design using Bootstrap.
 
+<br>
+
+[Back to Index](#index)
+
+----
+## Wireframe mockups
+
+Wireframes were created using Balsamiq to explore placement of UI elements. Here are the mockups of the different pages (on mobile and desktop):
+
+**Today's Tasks**
+
+![Today's Tasks Wireframe](/media/readme/wireframe_todays_tasks.png)
+
+**All Tasks**
+
+![All Tasks Wireframe](/media/readme/wireframe_all_tasks.png)
+
+**Edit/Create Task**
+
+![Edit/Create Tasks Wireframe](/media/readme/wireframe_edit_tasks.png)
+
+<br>
+
+[Back to Index](#index)
+
+----
 ## Technologies used
 
 - Django framework
@@ -118,8 +172,11 @@ Here is the database schema (in plain text format):
 
 ![Schema](/media/readme/schema.png)
 
+<br>
 
+[Back to Index](#index)
 
+----
 ## Testing
 
 ### LIGHTHOUSE
@@ -151,7 +208,11 @@ Manual tests performed:
 - I created several test user accounts in order to test that users have complete CRUD functionality, and that one user cannot access the data of another. All functions worked as intended.
 - I left the 'user energy' and 'selected tasks' fields populated overnight, and checked them the next day to see if they were auto-reset. This worked as intended.
 
+<br>
 
+[Back to Index](#index)
+
+----
 ## Credits
 - Coded by Jonatan Knut von Sydow as a student of Code Institute
 
