@@ -57,12 +57,28 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('task-list')
 
+    # check if user is allowed to delete task
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.user != request.user:
+            # redirect user if not allowed to delete
+            return redirect('task-list') 
+        return super().get(request, *args, **kwargs)
+
 
 # ask for user confirmation before deleting task
 class TaskDeleteConfirmView(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('task-list')
     template_name = 'task_confirm_delete.html'
+
+    # check if user is allowed to delete task
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.user != request.user:
+            # redirect user if not allowed to delete
+            return redirect('task-list')
+        return super().get(request, *args, **kwargs)
 
 
 # Allows the user to mark tasks as completed
