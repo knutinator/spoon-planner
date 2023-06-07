@@ -11,7 +11,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["spoonplanner.herokuapp.com", "localhost",'8000-knutinator-spoonplanner-qmv3viotjvh.ws-eu98.gitpod.io']
+ALLOWED_HOSTS = ["spoonplanner.herokuapp.com", "localhost",
+                 '8000-knutinator-spoonplanner-qmv3viotjvh.ws-eu98.gitpod.io']
 
 
 # Application definition
@@ -59,7 +60,7 @@ WSGI_APPLICATION = 'spoonplanner.wsgi.application'
 
 # Database
 DATABASES = {
-   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
