@@ -1,36 +1,46 @@
-# Spoonplanner
+
+<!-- TOC ignore:true -->
+# Spoonplanner 
 
 ![SpoonPlanner](/media/readme/mockup_spoon.png)
 <a href="https://spoonplanner.herokuapp.com/">Spoonplanner</a> is a browser based tool designed specifically for people within the neurodiverse community who may struggle with organizing their day-to-day activities.
 
  The app provides a user-friendly interface that enables users to create, edit, delete, and view their tasks in an easy and intuitive way. Tasks are organized into two main categories: "Today's Tasks" and "All Tasks". The app also calculates and displays whether there will be a surplus or deficit of energy based on the input energy and the total energy needed for the scheduled tasks.
 
+***Note:*** In the current form the app is provided as an MVP (Minimum Viable Product) version in order to try out the basic functionality. Further development will bring more functions, a more coherent design and easier navigation.
+
 <br>
 
 ----
+<!-- TOC ignore:true -->
+# Index
+<!-- TOC -->
 
-## Index
+- [Features](#features)
+    - [Future Features](#future-features)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Development](#development)
+    - [Wireframe mockups](#wireframe-mockups)
+    - [Technologies used](#technologies-used)
+        - [Database](#database)
+- [Testing](#testing)
+    - [User Stories & Manual Testing](#user-stories--manual-testing)
+    - [Lighthouse validation](#lighthouse-validation)
+    - [HTML validation](#html-validation)
+    - [CSS validation](#css-validation)
+    - [Responsiveness testing](#responsiveness-testing)
+    - [Additional Manual testing](#additional-manual-testing)
+- [Credits](#credits)
 
-1. [Features](#features)
-2. [Future Features](#future-features)
-3. [Usage](#usage)
-4. [Deployment](#deployment)
-5. [Development](#development)
-6. [Wireframe mockups](#wireframe-mockups)
-7. [Technologies used](#technologies-used)
-8. [Testing](#testing)
-   - [Lighthouse](#lighthouse)
-   - [HTML](#html)
-   - [CSS](#css)
-   - [Responsiveness](#responsiveness)
-   - [Manual Testing](#manual-testing)
-9. [Database Schema](#database-schema)
-10. [Credits](#credits)
- 
+<!-- /TOC -->
+
+
+
 <br>
 
 ----
-## Features
+# Features
 What follows is a description of all parts and functions of the app:
 
 - User accounts to keep schedules safe and private
@@ -75,7 +85,8 @@ These are features that were considered, but not implemented into the MVP of thi
 [Back to Index](#index)
 
 ----
-## Usage
+# Usage
+Here's how to use the basic functions of the app:
 
 1. Navigate to https://spoonplanner.herokuapp.com/ in your web browser
 2. Register a new account or log in with an existing one
@@ -93,7 +104,7 @@ These are features that were considered, but not implemented into the MVP of thi
 [Back to Index](#index)
 
 ----
-## Deployment
+# Deployment
 
 This project was deployed using GitHub. To deploy your own instance of the project, you can follow these steps:
 
@@ -119,19 +130,20 @@ That's it! With these steps, you should have a live instance of your project run
 [Back to Index](#index)
 
 ----
-## Development
+# Development
 
 This app was developed using an agile methodology. After an initial brainstorm period, an idea was settled upon. But, in order to fit within the scope of this project, the app was scaled down to an MVP (minimum viable product) containing just the basic functionality.
 
-Next, a series of user stories was written to reflect all the functionality within the app. All user stories can be found here: https://github.com/users/knutinator/projects/2/views/1
+Next, a series of user stories was written to reflect all the functionality within the app. All User Stories (and the associated tests) can be found further down, under the section [User Stories manual testing](#user-stories-manual-testing).
 
-(Note: some user stories were left unfinished, since they were deemed unneccesary in the MVP stage of the project)
+The User Stories can also be viewed on the app's [Project Board on GitHub](https://github.com/users/knutinator/projects/2).
+(Note: some user stories were left unfinished, since they were deemed unneccesary in the MVP stage of the project. These stories will be adressed in future developments of the app.).
 
 Clicking on any of the user stories reveals how each of the stories were further broken down into concrete tasks for the development team (which is me).
 
 Developing in this manner proved to be a useful way of keeping control of exactly what needed to be done at each stage of the process.
 
-Lastly, after all neccesary functionality was implemented, the app was styled in an user-friendly and mobile-first design using Bootstrap.
+Lastly, after all neccesary functionality was implemented, the app was styled in an user-friendly and mobile-first design using Bootstrap. The goal at this stage was to achieve a simple, yet functional design which could be improved upon in further development. Below are wireframe mockups that displays how I approached this task.
 
 <br>
 
@@ -146,14 +158,19 @@ Wireframes were created using Balsamiq to explore placement of UI elements. Here
 
 ![Today's Tasks Wireframe](/media/readme/wireframe_todays_tasks.png)
 
+<br>
+
 **All Tasks**
 
 ![All Tasks Wireframe](/media/readme/wireframe_all_tasks.png)
 
-**Edit/Create Task**
+<br>
+
+**Edit/Create Task** (Same layout for both)
 
 ![Edit/Create Tasks Wireframe](/media/readme/wireframe_edit_tasks.png)
 
+<br>
 <br>
 
 [Back to Index](#index)
@@ -177,34 +194,507 @@ Here is the database schema (in plain text format):
 [Back to Index](#index)
 
 ----
-## Testing
+# Testing
 
-### LIGHTHOUSE
+## User Stories & Manual Testing
+
+Automated testing was considered, but eventually I chose manual testing, since the scope of this project is quite small at the moment. Here follows a description of  the 20 User Stories and the tests I defined for each of them:
+
+<br>
+
+---
+<br>
+
+**USER STORY 1:**<br>
+As a user, I want to be able to create an account, including username and password, so I can securely log in and create my own schedule.
+
+**Test Scenario: Account Creation**
+1. Try to log in by clicking the 'Log In' button with empty input fields.
+2. Click the 'Create New User' button to access the registration page.
+3. Enter a unique username and a strong password(twice).
+4. Click on the "Sign Up" button.
+5. Attempt to log in with the newly created username and password.
+6. Verify that the login is successful, and the user is redirected to their schedule page.
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+**USER STORY 2:**<br>
+As a user, I want to be able to create a new task with a name, description, and "energy needed" value so that I can remember what I need to do.
+
+**Test Scenario: Task Creation**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "All Tasks" page by clicking the 'Add Tasks' or 'View all Tasks' button.
+3. Click the 'Create New Task' button.
+4. Fill in the required fields: task name, description, completion and energy needed.
+5. Click on the "Create Task" button.
+6. Verify that the new task is successfully created and displayed in the task list.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 3:**<br>
+As a user, I want to be able to edit the task I have created so that I can make changes to my schedule.
+
+**Test Scenario: Task Editing**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "All Tasks" page by clicking the 'Add Tasks' or 'View all Tasks' button.
+3. If there are any tasks in the list, click the 'Edit' button on a task.
+4. Modify the task name, description, completion or energy needed value.
+5. Click on the "Save Changes" button.
+6. Verify that the task is successfully updated with the new information.
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+<br>
+
+
+---
+<br>
+
+
+**USER STORY 4:**<br>
+As a user, I want to be able to view a list of all my tasks so that I can see what needs to be done.
+
+**Test Scenario: Task List Display**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "All Tasks" page by clicking the 'Add Tasks' or 'View all Tasks' button.
+3. Verify that all tasks associated with the user are displayed correctly, including their names, descriptions, and energy needed values.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 5:**<br>
+As a user, I want to be able to delete a task so that I can remove it from my schedule.
+
+**Test Scenario: Task Deletion**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "All Tasks" page by clicking the 'Add Tasks' or 'View all Tasks' button.
+3. If there are any tasks in the list, click the 'Delete' button on a task.
+4. Confirm the deletion by pressing 'Delete' again.
+5. Verify that the task is successfully deleted and no longer appears in the task list.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 6:**<br>
+As a user, I want to be able to mark tasks as completed so that I can keep track of my progress.
+
+**Test Scenario: Task Completion**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "Today's Tasks" page, using button on top right.
+3. If there are any tasks in the list, click the 'Completed' checkbox on a task.
+4. Verify that the task status is updated to "completed".
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 7:**<br>
+As a user, I want to be able to switch between the "All Tasks" and "Today's Tasks" pages so I can prioritize more easily.
+
+**Test Scenario: Page Navigation**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "All Tasks" page.
+3. Verify that the "All Tasks" page displays all tasks.
+4. Navigate to the "Today's Tasks" page.
+5. Verify that the "Today's Tasks" page only displays tasks scheduled for the current day (if any).
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 8:**<br>
+As a user, I want to be able to add tasks from the "All Tasks" page to display on the "Today's Tasks" page in order to schedule them.
+
+**Test Scenario: Task Scheduling**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "All Tasks" page.
+3. Click on the "Add to Schedule" button on any task.
+4. Verify that the task is successfully added to the "Today's Tasks" page.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 9:**<br>
+As a user, I want to be able to manually clear the view in "Today's Tasks" so that I can start over and schedule a new set of tasks for the day.
+
+**Test Scenario: Clear Today's Tasks**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "Today's Tasks" page.
+3. Click on the "Clear Schedule" button.
+4. Verify that the "Today's Tasks" list is empty.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 10:**<br>
+As a user, I want to be prompted to input my available energy for the day so that the app can calculate if I have enough energy to complete my scheduled tasks in "Today's Tasks".
+
+**Test Scenario: Energy Input**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "Today's Tasks" page.
+3. Click the 'Input Energy' button.
+4. Enter the available energy value for the day into the field.
+5. Verify that the energy input is successfully saved and stored on the top of 'Today's Tasks.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 11:**<br>
+As a user, I want the app to calculate and display whether I will have a surplus or deficit of energy (in spoons) based on my scheduled tasks and available energy so that I can plan my day accordingly.
+
+**Test Scenario: Energy Calculation**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "Today's Tasks" page.
+3. Ensure that tasks are added and available energy is provided.
+4. Verify that the app accurately calculates and displays the energy surplus or deficit.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 12:**<br>
+As a user, I wish that my daily energy is reset each night so I can begin each day by inputting my current energy level.
+
+**Test Scenario: Daily Energy Reset**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "Today's Tasks" page.
+3. Click the 'Input Energy' button and input your daily energy.
+4. Verify that the energy value is displayed on 'Today's Tasks'.
+5. Wait 24 hours.
+6. Log in again and verify that the energy value has been reset to zero.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 13:**<br>
+As a user, I want yesterday's scheduled tasks to be reset at midnight so I can begin each day with a fresh schedule.
+
+**Test Scenario: Daily Task Reset**
+
+1. Log in to the application using valid credentials.
+2. Navigate to the "All Tasks" page.
+3. Schedule tasks to 'Today's Tasks'.
+4. Verify that the tasks are scheduled.
+5. Wait 24 hours.
+6. Log in again and verify that yesterday's scheduled tasks are reset at midnight, and the "Today's Tasks" list is empty.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 14:**<br>
+As a user, I wish that buttons and functions that require login are hidden while I'm not logged in to avoid confusion over what functions can be used.
+
+**Test Scenario: Login Validation**
+
+1. Open the application without logging in.
+2. Navigate through the different pages and verify that buttons, pages and functions requiring login are hidden or disabled.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 15:**<br>
+As an admin, I want to be able to view a list of all user accounts so that I can manage the users.
+
+**Test Scenario: User Account List**
+
+1. Log in to the application as an admin, using https://spoonplanner.herokuapp.com/admin/
+2. Navigate to the user management section, by clicking 'Users'.
+3. Verify that a list of all user accounts is displayed, including usernames and other details.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 16:**<br>
+As an admin, I wish to be able to create user accounts so that I can test the functionality of the app.
+
+**Test Scenario: User Account Creation**
+
+1. Log in to the application as an admin.
+2. Navigate to the user management section.
+3. Click on the "Add User" or '+ Add' button.
+4. Fill in the necessary details (username, password) for a new user account.
+5. Verify that the user account is successfully created and added to the user account list.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 17:**<br>
+As an admin, I want to be able to delete a user account so that I can remove it from the system.
+
+**Test Scenario: User Account Deletion**
+
+1. Log in to the application as an admin.
+2. Navigate to the user management section.
+3. Select a user account from the list.
+4. Click on the "Delete" button.
+5. Verify that the user account is successfully deleted and removed from the user account list.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 18:**<br>
+As an admin, I wish to be able to create tasks so that I can test the functionality of the app.
+
+**Test Scenario: Task Creation**
+
+1. Log in to the application as an admin.
+2. Navigate to the task management section.
+3. Click on the "Add Task" or '+ Add' button.
+4. Fill in the necessary details (name, description, energy needed, etc.) for a new task.
+5. Verify that the task is successfully created and added to the task list.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 19:**<br>
+As an admin, I want to be able to view a list of all tasks so that I can manage the tasks.
+
+**Test Scenario: Task List**
+
+1. Log in to the application as an admin.
+2. Navigate to the task management section by clicking 'Tasks'.
+3. Verify that a list of all tasks is displayed, including task names and other relevant details.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+---
+<br>
+
+
+**USER STORY 20:**<br>
+As an admin, I want to be able to delete a task so that I can remove it from the system.
+
+**Test Scenario: Task Deletion**
+
+1. Log in to the application as an admin.
+2. Navigate to the task management section.
+3. Select a task from the list.
+4. Click on the "Delete" button.
+5. Verify that the task is successfully deleted and removed from the task list.
+
+
+<br>
+
+**Test Result:** <br>
+Functioning as intended.
+
+<br>
+
+
+
+<br>
+
+[Back to Index](#index)
+
+---
+<br>
+
+
+
+
+
+## Lighthouse validation
 
  The site has been run through the Lighthouse tester in Google Chrome DevTools and recieved excellent scores:
 
 ![Lighthouse](/media/readme/lighthouse.png)
 
-### HTML
+<br>
+
+## HTML validation
 
 HTML was tested using the official W3C validator, which the site passed without any errors:
 ![W3C](/media/readme/w3c.png)
 
-### CSS
+<br>
+
+## CSS validation
 
 CSS did not have to be tested, since the site only uses unmodified Bootstrap styling.
 
-### RESPONSIVENESS
+<br>
+
+## Responsiveness testing
 
 The app was tested using a variety of resolutions in Chrome DevTools, as well as on an Android Phone. Since it was developed with mobiles in mind, the app scales witout any problems.
 
-### MANUAL TESTING
+<br>
 
-Automated testing was considered, but eventually I chose manual testing, since the size of this project is quite small at the moment.
+## Additional Manual testing
 
-Manual tests performed:
+Automated testing was considered, but eventually I chose manual testing, since the scope of this project is quite small at the moment. Apart from the User Story testing described above, the following manual tests were performed:
+
+
 - While logged out, I tried accessing all of the separate URL:s in the app, to make sure that a user cannot use any of the functions unless logged in.
-- In the Admin account, I tested that all built-in Django functions were working properly, like creating, viewing and deleting user accounts and tasks. All functions worked as intended.
+
 - I created several test user accounts in order to test that users have complete CRUD functionality, and that one user cannot access the data of another. All functions worked as intended.
 - I left the 'user energy' and 'selected tasks' fields populated overnight, and checked them the next day to see if they were auto-reset. This worked as intended.
 
@@ -213,11 +703,11 @@ Manual tests performed:
 [Back to Index](#index)
 
 ----
-## Credits
+# Credits
 - Coded by Jonatan Knut von Sydow as a student of Code Institute
 
 - Login page inspiration: https://learndjango.com/tutorials/django-login-and-logout-tutorial
 
-- Mockup phone app image from <a href="https://www.freepik.com/free-psd/premium-mobile-phone-screen-mockup-template_3891016.htm#query=app%20mockup&position=3&from_view=keyword&track=ais">rawpixel.com</a> on Freepik
+- Mockup phone app image from <a href="https://www.freepik.com/free-psd/premium-mobile-phone-screen-mockup-template_3891016.htm">rawpixel.com</a> on Freepik
 
 - Read more about the [Spoon Theory](https://en.wikipedia.org/wiki/Spoon_theory), which inspired this app.
