@@ -11,9 +11,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["spoonplanner.herokuapp.com", "localhost",
-                 '8000-knutinator-spoonplanner-qmv3viotjvh.ws-eu98.gitpod.io']
-
+ALLOWED_HOSTS = ["spoonplanner.herokuapp.com", "localhost"]
 
 # Application definition
 INSTALLED_APPS = [
