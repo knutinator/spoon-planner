@@ -46,28 +46,52 @@
 # Features
 What follows is a description of all parts and functions of the app:
 
-- User accounts to keep schedules safe and private
+<br>
+
+- User accounts to keep schedules safe and private:
 
 ![Login](/media/readme/login.png)
-- Create, edit, and delete tasks
+
+
+<br>
+
+- Create, edit, and delete tasks:
 
 ![Create task](/media/readme/create.png)
-- View all tasks or just today's tasks
+
+<br>
+
+- View all tasks or just today's tasks:
 
 ![Today's tasks](/media/readme/today.png)
-- Add tasks to today's tasks from the all tasks page
+
+<br>
+
+- Add tasks to today's tasks from the all tasks page:
 
 ![Select tasks](/media/readme/add.png)
-- Mark tasks as completed
+
+<br>
+
+- Mark tasks as completed:
 
 ![Mark as completed](/media/readme/complete.png)
-- Input daily energy levels
+
+<br>
+
+- Input daily energy levels:
 
 ![Input energy](/media/readme/energy.png)
-- View energy surplus or deficit for the day
+
+<br>
+
+- View energy surplus or deficit for the day:
 
 ![Surplus energy](/media/readme/surplus.png)
-- Admin accounts for testing and managing users
+
+<br>
+
+- Admin accounts for testing and managing users:
 
 ![Admin](/media/readme/admin_4.png)
 
@@ -79,6 +103,7 @@ What follows is a description of all parts and functions of the app:
 ## Future Features 
 These are features that were considered, but not implemented into the MVP version of this project.
 - Keep track of your energy levels over several days
+
 - Auto-fill today's schedule based on today's energy
 - Plan days in advance
 - Display energy cost in a clearer way (with colors)
@@ -92,6 +117,7 @@ These are features that were considered, but not implemented into the MVP versio
 Here's how to use the basic functions of the app:
 
 1. Navigate to https://spoonplanner.herokuapp.com/ in your web browser
+
 2. Register a new account or log in with an existing one
 3. Create tasks by clicking on the "Add Task" button
 4. View tasks on the "All Tasks" page or the "Today's Tasks" page
@@ -113,6 +139,7 @@ Here's how to use the basic functions of the app:
 This project was deployed using GitHub. To deploy your own instance of the project, you can follow these steps:
 
 1. Fork the repository to your own GitHub account.
+
 2. Clone the repository to your local machine using `git clone`.
 3. Install the necessary dependencies by running `pip install -r requirements.txt` in the root directory of the project.
 4. Set up your environment variables by creating a `.env` file in the root directory of the project. You can use the `.env.example` file as a template.
@@ -124,6 +151,7 @@ This project was deployed using GitHub. To deploy your own instance of the proje
 If you'd like to deploy your project to Heroku, you can follow these additional steps:
 
 1. Create a Heroku account at [https://www.heroku.com/](https://www.heroku.com/) if you haven't already.
+
 2. Install the Heroku CLI by following the instructions at [https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli).
 3. Log in to your Heroku account using the CLI by running `heroku login` in your terminal and following the prompts.
 4. Create a new Heroku app by running `heroku create` in your terminal.
@@ -152,7 +180,7 @@ Next, a series of user stories was written to reflect all the functionality with
 The User Stories can also be viewed on the app's [Project Board on GitHub](https://github.com/users/knutinator/projects/2).
 (Note: some user stories were left unfinished, since they were deemed unneccesary in the MVP stage of the project. These stories will be adressed in future developments of the app.).
 
-Clicking on any of the user stories reveals how each of the stories were further broken down into concrete tasks for the development team (which is me).
+Clicking on any of the user stories (in the Project Board) reveals how each of the stories were further broken down into concrete tasks for the development team (which is me).
 
 Developing in this manner proved to be a useful way of keeping control of exactly what needed to be done at each stage of the process.
 
@@ -166,6 +194,9 @@ Lastly, after all neccesary functionality was implemented, the app was styled in
 ## Wireframe mockups
 
 Wireframes were created using Balsamiq to explore placement of UI elements. Here are the mockups of the different pages (on mobile and desktop):
+
+<br>
+
 
 **Today's Tasks**
 
@@ -192,9 +223,12 @@ Wireframes were created using Balsamiq to explore placement of UI elements. Here
 ## Technologies used
 
 - Django framework
+
 - PostgreSQL database (ElephantSQL)
 - HTML/CSS (Bootstrap)
 - GitHub/Heroku (For deployment)
+
+<br>
 
 ### Database
 
