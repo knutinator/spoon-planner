@@ -69,7 +69,7 @@ What follows is a description of all parts and functions of the app:
 ![Surplus energy](/media/readme/surplus.png)
 - Admin accounts for testing and managing users
 
-![Admin](/media/readme/admin.png)
+![Admin](/media/readme/admin_4.png)
 
 <br>
 
@@ -77,7 +77,7 @@ What follows is a description of all parts and functions of the app:
 
 ----
 ## Future Features 
-These are features that were considered, but not implemented into the MVP of this project.
+These are features that were considered, but not implemented into the MVP version of this project.
 - Keep track of your energy levels over several days
 - Auto-fill today's schedule based on today's energy
 - Plan days in advance
