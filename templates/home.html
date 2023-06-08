@@ -10,10 +10,17 @@
                     {% if user.is_authenticated %}
                     <h3 class="card-title mb-0 float-start">Today's Tasks</h3>
                     <a href="{% url 'task-list' %}" class="float-end text-light">View all tasks</a>
+
                     {% endif %}
                 </div>
                 <!-- main content -->
                 <div class="card-body">
+                    {% if user.is_authenticated %}
+                    <!-- welcome message -->
+                    {% else %}
+                    <h1 class="card-title">Spoonplanner helps you plan your mental energy for tasks.</h1>
+                    <br>
+                    {% endif %}
                     {% if user.is_authenticated %}
                     {% if daily_energy %}
                     <p class="mb-4 float-start">Energy: {{ daily_energy.user_energy }} spoons</p>
