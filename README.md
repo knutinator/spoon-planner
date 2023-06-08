@@ -5,9 +5,11 @@
 ![SpoonPlanner](/media/readme/mockup_spoon.png)
 <a href="https://spoonplanner.herokuapp.com/">Spoonplanner</a> is a browser based tool designed specifically for people within the neurodiverse community who may struggle with organizing their day-to-day activities.
 
- The app provides a user-friendly interface that enables users to create, edit, delete, and view their tasks in an easy and intuitive way. Tasks are organized into two main categories: "Today's Tasks" and "All Tasks". The app also calculates and displays whether there will be a surplus or deficit of energy based on the input energy and the total energy needed for the scheduled tasks.
+ The app provides a user-friendly interface that enables users to create, edit, delete, and view their tasks in an easy and intuitive way. Tasks are organized into two main categories: "Today's Tasks" and "All Tasks". The app also calculates and displays whether there will be a surplus or deficit of energy based on the input energy and the total energy needed for the scheduled tasks. 
+ 
+ <br>
 
-***Note:*** In the current form the app is provided as an MVP (Minimum Viable Product) version in order to try out the basic functionality. Further development will bring more functions, a more coherent design and easier navigation.
+> Note: In the current form the app is provided as an MVP (Minimum Viable Product) version in order to try out the basic functionality. Further development will bring more functions, a more coherent design and easier navigation.
 
 <br>
 
@@ -20,6 +22,7 @@
     - [Future Features](#future-features)
 - [Usage](#usage)
 - [Deployment](#deployment)
+    - [Deploying to Heroku](#deploying-to-heroku)
 - [Development](#development)
     - [Wireframe mockups](#wireframe-mockups)
     - [Technologies used](#technologies-used)
@@ -104,26 +107,36 @@ Here's how to use the basic functions of the app:
 [Back to Index](#index)
 
 ----
+
 # Deployment
 
 This project was deployed using GitHub. To deploy your own instance of the project, you can follow these steps:
 
 1. Fork the repository to your own GitHub account.
-2. Clone the repository to your local machine using git clone.
-3. Install the necessary dependencies by running pip install -r requirements.txt in the root directory of the project.
-4. Set up your environment variables by creating a .env file in the root directory of the project. You can use the .env.example file as a template.
-5. Run the migrations using python manage.py migrate.
-6. Start the server using python manage.py runserver.
+2. Clone the repository to your local machine using `git clone`.
+3. Install the necessary dependencies by running `pip install -r requirements.txt` in the root directory of the project.
+4. Set up your environment variables by creating a `.env` file in the root directory of the project. You can use the `.env.example` file as a template.
+5. Run the migrations using `python manage.py migrate`.
+6. Start the server using `python manage.py runserver`.
 
-If you'd like to deploy your project to a live server, you can follow these additional steps:
+## Deploying to Heroku
 
-1. Choose a hosting provider that supports Django applications, such as Heroku or PythonAnywhere.
-2. Create an account and set up your server environment.
-3. Connect your hosting provider to your GitHub account and set up automatic deployments from your repository.
-4. Set up your environment variables in your hosting provider's control panel or using a .env file on the server.
-5. Run the necessary commands to install dependencies and start the server on your hosting provider. These commands will depend on the hosting provider you choose.
+If you'd like to deploy your project to Heroku, you can follow these additional steps:
 
-That's it! With these steps, you should have a live instance of your project running on the internet.
+1. Create a Heroku account at [https://www.heroku.com/](https://www.heroku.com/) if you haven't already.
+2. Install the Heroku CLI by following the instructions at [https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli).
+3. Log in to your Heroku account using the CLI by running `heroku login` in your terminal and following the prompts.
+4. Create a new Heroku app by running `heroku create` in your terminal.
+5. Push your code to Heroku by running `git push heroku main`.
+6. Set up your environment variables on Heroku using the command `heroku config:set KEY=VALUE` for each variable defined in your `.env` file.
+7. Run the migrations on Heroku using `heroku run python manage.py migrate`.
+8. Start the server on Heroku using `heroku ps:scale web=1`.
+9. Visit your deployed application by running `heroku open` in your terminal.
+
+That's it! With these steps, you should have a live instance of your project running on Heroku.
+
+> Note: These instructions are for deploying a Django application to Heroku specifically. If you choose a different hosting provider, the steps may vary slightly. Please refer to the hosting provider's documentation for more information.
+
 
 <br>
 
@@ -690,7 +703,7 @@ The app was tested using a variety of resolutions in Chrome DevTools, as well as
 
 ## Additional Manual testing
 
-Automated testing was considered, but eventually I chose manual testing, since the scope of this project is quite small at the moment. Apart from the User Story testing described above, the following manual tests were performed:
+Apart from the User Story testing described above, the following manual tests were performed:
 
 
 - While logged out, I tried accessing all of the separate URL:s in the app, to make sure that a user cannot use any of the functions unless logged in.
