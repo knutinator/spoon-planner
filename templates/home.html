@@ -10,7 +10,8 @@
                     {% if user.is_authenticated %}
                     <h3 class="card-title mb-0 float-start">Today's Tasks</h3>
                     <a href="{% url 'task-list' %}" class="float-end text-light">View all tasks</a>
-
+                    {% else %}
+                    <h3 class="card-title mb-0 float-start">SpoonPlanner 🥄 </h3>
                     {% endif %}
                 </div>
                 <!-- main content -->
@@ -18,7 +19,12 @@
                     {% if user.is_authenticated %}
                     <!-- welcome message -->
                     {% else %}
-                    <h1 class="card-title">Spoonplanner helps you plan your mental energy for tasks.</h1>
+                    <br>
+                    <p class="card-title"><strong>Plan and Preserve Your Mental Energy</strong></p>
+                    
+                    <p>Welcome to Spoonplanner, your go-to app for preserving your mental well-being while managing tasks. Calculate your energy levels, plan your schedule, and conquer tasks with ease.</p>
+
+                    <p>Create an account, log in, and start scheduling. Our app calculates if you have enough energy for your tasks, helping you prioritize and prevent burnout. Take control of your mental energy and thrive.</p>
                     <br>
                     {% endif %}
                     {% if user.is_authenticated %}
@@ -58,8 +64,8 @@
                     <p>Hm... Consider moving some tasks to another day?</p>
                     {% endif %}
                     {% else %}
-                    <p>You are not logged in.</p>
-                    <p><a href="{% url 'login' %}" class="btn btn-primary">Log in</a></p>
+                    <p>Click the button to start using SpoonPlanner!</p>
+                    <p><a href="{% url 'login' %}" class="btn btn-primary">Log in / Create account</a></p>
                     {% endif %}
                 </div>
                 <div class="card-footer">
