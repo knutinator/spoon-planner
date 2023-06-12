@@ -247,34 +247,34 @@ Here is the database schema (in plain text format):
 
 Automated testing was considered, but eventually I chose manual testing, since the scope of this project is quite small at the moment. Here follows a description of  the 20 User Stories and the tests I defined for each of them:
 <br>
-- [User Story 1: Account Creation](#user-story-1-br)
-- [User Story 2: Task Creation](#user-story-2-br)
-- [User Story 3: Task Editing](#user-story-3-br)
-- [User Story 4: Task List Display](#user-story-4-br)
-- [User Story 5: Task Deletion](#user-story-5-br)
-- [User Story 6: Task Completion](#user-story-6-br)
-- [User Story 7: Page Navigation](#user-story-7-br)
-- [User Story 8: Task Scheduling](#user-story-8-br)
-- [User Story 9: Clear Today's Tasks](#user-story-9-br)
-- [User Story 10: Energy Input](#user-story-10-br)
-- [User Story 11: Energy Calculation](#user-story-11-br)
-- [User Story 12: Daily Energy Reset](#user-story-12-br)
-- [User Story 13: Daily Task Reset](#user-story-13-br)
-- [User Story 14: Login Validation](#user-story-14-br)
-- [User Story 15: Admin User Account List](#user-story-15-br)
-- [User Story 16: Admin User Account Creation](#user-story-16-br)
-- [User Story 17: Admin User Account Deletion](#user-story-17-br)
-- [User Story 18: Admin Task Creation](#user-story-18-br)
-- [User Story 19: Admin Task List](#user-story-19-br)
-- [User Story 20: Admin Task Deletion](#user-story-20-br)
+- [User Story 1: Account Creation](#user-story-1)
+- [User Story 2: Task Creation](#user-story-2)
+- [User Story 3: Task Editing](#user-story-3)
+- [User Story 4: Task List Display](#user-story-4)
+- [User Story 5: Task Deletion](#user-story-5)
+- [User Story 6: Task Completion](#user-story-6)
+- [User Story 7: Page Navigation](#user-story-7)
+- [User Story 8: Task Scheduling](#user-story-8)
+- [User Story 9: Clear Today's Tasks](#user-story-9)
+- [User Story 10: Energy Input](#user-story-10)
+- [User Story 11: Energy Calculation](#user-story-11)
+- [User Story 12: Daily Energy Reset](#user-story-12)
+- [User Story 13: Daily Task Reset](#user-story-13)
+- [User Story 14: Login Validation](#user-story-14)
+- [User Story 15: Admin User Account List](#user-story-15)
+- [User Story 16: Admin User Account Creation](#user-story-16)
+- [User Story 17: Admin User Account Deletion](#user-story-17)
+- [User Story 18: Admin Task Creation](#user-story-18)
+- [User Story 19: Admin Task List](#user-story-19)
+- [User Story 20: Admin Task Deletion](#user-story-20)
 
 <br>
 
 ---
-
+<br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 1:** <br>
+### **USER STORY 1:**
 As a user, I want to be able to create an account, including username and password, so I can securely log in and create my own schedule.
 
 **Test Scenario: Account Creation**
@@ -296,7 +296,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 2:** <br>
+### **USER STORY 2:**
 As a user, I want to be able to create a new task with a name, description, and 'energy needed' value so that I can remember what I need to do.
 
 **Test Scenario: Task Creation**
@@ -320,7 +320,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 3:** <br>
+### **USER STORY 3:**
 As a user, I want to be able to edit the task I have created so that I can make changes to my schedule.
 
 **Test Scenario: Task Editing**
@@ -345,7 +345,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 4:** <br>
+### **USER STORY 4:**
 As a user, I want to be able to view a list of all my tasks so that I can see what needs to be done.
 
 **Test Scenario: Task List Display**
@@ -366,7 +366,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 5:** <br>
+### **USER STORY 5:**
 As a user, I want to be able to delete a task so that I can remove it from my schedule.
 
 **Test Scenario: Task Deletion**
@@ -389,7 +389,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 6:** <br>
+### **USER STORY 6:**
 As a user, I want to be able to mark tasks as completed so that I can keep track of my progress.
 
 **Test Scenario: Task Completion**
@@ -411,7 +411,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 7:** <br>
+### **USER STORY 7:**
 As a user, I want to be able to switch between the 'All Tasks' and 'Today's Tasks' pages so I can prioritize more easily.
 
 **Test Scenario: Page Navigation**
@@ -434,7 +434,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 8:** <br>
+### **USER STORY 8:**
 As a user, I want to be able to add tasks from the 'All Tasks' page to display on the 'Today's Tasks' page in order to schedule them.
 
 **Test Scenario: Task Scheduling**
@@ -456,7 +456,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 9:** <br>
+### **USER STORY 9:**
 As a user, I want to be able to manually clear the view in 'Today's Tasks' so that I can start over and schedule a new set of tasks for the day.
 
 **Test Scenario: Clear Today's Tasks**
@@ -478,7 +478,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 10:** <br>
+### **USER STORY 10:**
 As a user, I want to be prompted to input my available energy for the day so that the app can calculate if I have enough energy to complete my scheduled tasks in 'Today's Tasks'.
 
 **Test Scenario: Energy Input**
@@ -501,7 +501,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 11:** <br>
+### **USER STORY 11:**
 As a user, I want the app to calculate and display whether I will have a surplus or deficit of energy (in spoons) based on my scheduled tasks and available energy so that I can plan my day accordingly.
 
 **Test Scenario: Energy Calculation**
@@ -523,7 +523,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 12:** <br>
+### **USER STORY 12:**
 As a user, I wish that my daily energy is reset each night so I can begin each day by inputting my current energy level.
 
 **Test Scenario: Daily Energy Reset**
@@ -547,7 +547,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 13:** <br>
+### **USER STORY 13:**
 As a user, I want yesterday's scheduled tasks to be reset at midnight so I can begin each day with a fresh schedule.
 
 **Test Scenario: Daily Task Reset**
@@ -571,7 +571,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 14:** <br>
+### **USER STORY 14:**
 As a user, I wish that buttons and functions that require login are hidden while I'm not logged in to avoid confusion over what functions can be used.
 
 **Test Scenario: Login Validation**
@@ -591,7 +591,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 15:** <br>
+### **USER STORY 15:**
 As an admin, I want to be able to view a list of all user accounts so that I can manage the users.
 
 **Test Scenario: Admin User Account List**
@@ -612,7 +612,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 16:** <br>
+### **USER STORY 16:**
 As an admin, I wish to be able to create user accounts so that I can test the functionality of the app.
 
 **Test Scenario: Admin User Account Creation**
@@ -635,7 +635,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 17:** <br>
+### **USER STORY 17:**
 As an admin, I want to be able to delete a user account so that I can remove it from the system.
 
 **Test Scenario: Admin User Account Deletion**
@@ -658,7 +658,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 18:** <br>
+### **USER STORY 18:**
 As an admin, I wish to be able to create tasks so that I can test the functionality of the app.
 
 **Test Scenario: Admin Task Creation**
@@ -681,7 +681,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 19:** <br>
+### **USER STORY 19:**
 As an admin, I want to be able to view a list of all tasks so that I can manage the tasks.
 
 **Test Scenario: Admin Task List**
@@ -702,7 +702,7 @@ Functioning as intended.
 <br>
 
 <!-- TOC ignore:true -->
-### **USER STORY 20:** <br>
+### **USER STORY 20:**
 As an admin, I want to be able to delete a task so that I can remove it from the system.
 
 **Test Scenario: Admin Task Deletion**
