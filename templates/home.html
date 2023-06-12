@@ -56,12 +56,14 @@
                     <p style="clear: both;" class="py-5"><strong>No tasks scheduled for today.</strong></p>
                     {% endif %}
                     <!-- message depending on surplus/deficit -->
+                    {% if selected_tasks %}
                     {% if energy_diff >= 0 %}
                     <p>Surplus energy: {{ energy_diff }} spoons</p>
                     <p>Great! Today you have enough energy for your tasks.</p>
                     {% else %}
                     <p>Deficit energy: {{ energy_diff }} spoons</p>
                     <p>Hm... Consider moving some tasks to another day?</p>
+                    {% endif %}
                     {% endif %}
                     {% else %}
                     <p>Click the button to start using SpoonPlanner!</p>
