@@ -24,6 +24,7 @@
 - [Deployment](#deployment)
     - [Deploying to Heroku](#deploying-to-heroku)
 - [Development](#development)
+    - [Structure sketch](#structure-sketch)
     - [Wireframe mockups](#wireframe-mockups)
     - [Technologies used](#technologies-used)
         - [Database](#database)
@@ -184,7 +185,18 @@ Clicking on any of the user stories (in the Project Board) reveals how each of t
 
 Developing in this manner proved to be a useful way of keeping control of exactly what needed to be done at each stage of the process.
 
-Lastly, after all neccesary functionality was implemented, the app was styled in an user-friendly and mobile-first design using Bootstrap. The goal at this stage was to achieve a simple, yet functional design which could be improved upon in further development. Below are wireframe mockups that displays how I approached this task.
+<br>
+
+[Back to Index](#index)
+
+----
+## Structure sketch
+
+A sketch of the app's basic page structure was created to map out the functionality and user access to different features. It helped determine the overall flow and organization of the application, ensuring an intuitive user experience.
+
+The bigger boxes represent the app's main pages, while the smaller boxes depict different sub-functions. The arrows show how the user navigates between the pages while using the app.
+
+![App Structure Sketch](/media/readme/structure_sketch_2.png)
 
 <br>
 
@@ -193,7 +205,10 @@ Lastly, after all neccesary functionality was implemented, the app was styled in
 ----
 ## Wireframe mockups
 
-Wireframes were created using Balsamiq to explore placement of UI elements. Here are the mockups of the different pages (on mobile and desktop):
+After all neccesary functionality was implemented, the app was styled in an user-friendly and mobile-first design using Bootstrap. The goal at this stage was to achieve a simple, yet functional design which could be improved upon in further development. 
+
+
+I created wireframes using Balsamiq to explore placement of UI elements. Here are the mockups of the different pages (on mobile and desktop):
 
 <br>
 
